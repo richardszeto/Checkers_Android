@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="35dp"
+    tools:context="com.RichardSzeto.checkers.PlayCheckers">
+    
+    <!-- dummy padding -->
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+    
+    <Button
+        android:id="@+id/onePlayerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/one_player"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:gravity="center"
+        android:onClick="onButtonClicked"
+        />
+    
+    <Button
+        android:id="@+id/twoPlayerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/two_players"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:gravity="center"
+        android:onClick="onButtonClicked"
+        />
+    
+    <!-- dummy padding -->
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+</LinearLayout>

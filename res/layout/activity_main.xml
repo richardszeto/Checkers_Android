@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="35dp"
+    tools:context="com.RichardSzeto.checkers.MainActivity" >
+	
+    <!-- dummy padding -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+    
+    <Button
+        android:id="@+id/playCheckersButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/play_checkers"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:gravity="center"
+        android:onClick="onButtonClicked"
+       	/>
+    
+    <Button
+        android:id="@+id/changeSettingsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/change_settings"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:gravity="center"
+        android:onClick="onButtonClicked"
+       	/>
+    
+    <!-- dummy padding -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+</LinearLayout>
