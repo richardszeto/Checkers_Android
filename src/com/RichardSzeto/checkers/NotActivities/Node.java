@@ -34,6 +34,13 @@ public class Node<T>
         
         link = newLink;
     }
+    
+    public Node(final Node<T> node)
+    {
+        data = node.data;
+        
+        link = node.link;
+    }
    
     public void clear()
     {

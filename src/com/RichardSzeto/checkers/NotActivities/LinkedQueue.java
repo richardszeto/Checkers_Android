@@ -24,6 +24,35 @@ public class LinkedQueue<T> implements QueueInterface<T>
         length = 0;
     }
     
+    public LinkedQueue(final LinkedQueue<T> linkedQueue)
+    {
+        length = linkedQueue.length;
+        
+        front = null;
+        
+        back = null;
+        
+        Node<T> otherNode = linkedQueue.front;
+        
+        if(otherNode != null)
+        {
+            front = new Node<T>(otherNode.getData());
+            
+            back = front;
+            
+            otherNode = otherNode.getLink();
+        }
+        
+        while(otherNode != null)
+        {
+            back.setLink(new Node<T>(otherNode.getData()));
+            
+            back = back.getLink();
+            
+            otherNode = otherNode.getLink();
+        }
+    }
+    
     public T getFront()
     {
         if(!isEmpty())
@@ -59,24 +88,29 @@ public class LinkedQueue<T> implements QueueInterface<T>
         return null;
     }
     
-    public void addToBack(T newElement)
+    public boolean addToBack(T newElement)
     {
-        if(isEmpty())
+        if(newElement != null)
         {
-            front = new Node<T>(newElement);
-            
-            back = front;
+            if(isEmpty())
+            {
+                front = new Node<T>(newElement);
+                
+                back = front;
+            }
+            else
+            {
+                back.setLink(new Node<T>(newElement));
+                
+                back = back.getLink();
+            }
             
             length++;
-        }
-        else
-        {
-            back.setLink(new Node<T>(newElement));
             
-            back = back.getLink();
-            
-            length++;
+            return true;
         }
+        
+        return false;
     }
     
     public int getLength()

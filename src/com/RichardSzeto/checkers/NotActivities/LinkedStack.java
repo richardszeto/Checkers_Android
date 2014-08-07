@@ -20,6 +20,35 @@ public class LinkedStack<T> implements StackInterface<T>
         length = 0;
     }
     
+    public LinkedStack(final LinkedStack<T> linkedStack)
+    {
+        length = linkedStack.length;
+        
+        top = null;
+        
+        Node<T> otherNode = linkedStack.top;
+        
+        Node<T> bottom = null;
+        
+        if(otherNode != null)
+        {
+            top = new Node<T>(otherNode.getData());
+            
+            bottom = top;
+            
+            otherNode = otherNode.getLink();
+        }
+        
+        while(otherNode != null)
+        {
+            bottom.setLink(new Node<T>(otherNode.getData()));
+            
+            bottom = bottom.getLink();
+            
+            otherNode = otherNode.getLink();
+        }
+    }
+    
     public T peek()
     {
         if(!isEmpty())
@@ -50,20 +79,25 @@ public class LinkedStack<T> implements StackInterface<T>
         return null;
     }
     
-    public void push(T newElement)
+    public boolean push(T newElement)
     {
-        if(isEmpty())
+        if(newElement != null)
         {
-            top = new Node<T>(newElement);
+            if(isEmpty())
+            {
+                top = new Node<T>(newElement);
+            }
+            else
+            {
+                top = new Node<T>(newElement, top);
+            }
             
             length++;
-        }
-        else
-        {
-            top = new Node<T>(newElement, top);
             
-            length++;
+            return true;
         }
+        
+        return false;
     }
     
     public int getLength()

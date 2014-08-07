@@ -17,6 +17,11 @@ class ActionQueue implements QueueInterface<Action>
 	    queue = new LinkedQueue<Action>();
 	}
 	
+	public ActionQueue(ActionQueue actionQueue)
+	{
+	    queue = new LinkedQueue<Action>((LinkedQueue<Action>) actionQueue.queue);
+	}
+	
     public Action getFront()
     {
         return queue.getFront();
@@ -27,9 +32,9 @@ class ActionQueue implements QueueInterface<Action>
         return queue.removeFront();
     }
     
-    public void addToBack(Action newElement)
+    public boolean addToBack(Action newElement)
     {
-        queue.addToBack(newElement);
+        return queue.addToBack(newElement);
     }
     
     public int getLength()

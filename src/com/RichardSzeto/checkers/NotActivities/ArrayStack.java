@@ -7,6 +7,9 @@
 
 package com.RichardSzeto.checkers.NotActivities;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
 public class ArrayStack<T> implements StackInterface<T>
 {
     protected final static int DEFAULT_STACK_SIZE = 50;
@@ -42,6 +45,27 @@ public class ArrayStack<T> implements StackInterface<T>
         stack = (T[]) new Object[capacity];
     }
     
+    @SuppressWarnings("unchecked")
+    public ArrayStack(final ArrayStack<T> arrayStack) throws NoSuchMethodException, 
+        InstantiationException, IllegalAccessException, IllegalArgumentException, 
+        InvocationTargetException
+    {
+        capacity = arrayStack.capacity;
+        
+        length = arrayStack.length;
+        
+        stack = (T[]) new Object[capacity];
+        
+        for(int i = 0; i < length; i++)
+        {
+            Class<?> clazz = arrayStack.stack[i].getClass();
+            
+            Constructor<?> copyConstructor = clazz.getConstructor(clazz);
+            
+            stack[i] = (T) copyConstructor.newInstance(arrayStack.stack[i]);
+        }
+    }
+    
     public T peek()
     {
         if(!isEmpty())
@@ -68,16 +92,23 @@ public class ArrayStack<T> implements StackInterface<T>
         return null;
     }
     
-    public void push(T newElement)
+    public boolean push(T newElement)
     {
-        if(length == capacity)
+        if(newElement != null)
         {
-            doubleCapacity();
+            if(length == capacity)
+            {
+                doubleCapacity();
+            }
+    
+            stack[length] = newElement;
+    
+            length++;
+            
+            return true;
         }
-
-        stack[length] = newElement;
-
-        length++;
+        
+        return false;
     }
     
     public int getLength()

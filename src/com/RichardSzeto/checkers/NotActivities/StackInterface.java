@@ -6,7 +6,7 @@ public interface StackInterface<T>
     
     public T pop();
     
-    public void push(T newElement);
+    public boolean push(T newElement);
     
     public int getLength();
     

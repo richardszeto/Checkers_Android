@@ -32,6 +32,17 @@ public class Action
         endY = newEndY;
     }
     
+    public Action(final Action action)
+    {
+        startX = action.startX;
+        
+        startY = action.startY;
+        
+        endX = action.endX;
+        
+        endY = action.endY;
+    }
+    
     public int getStartX()
     {
         return startX;

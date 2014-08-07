@@ -21,6 +21,14 @@ public class Timer
         beg = 0;
         end = 0;
 	}
+	
+	public Timer(final Timer timer)
+	{
+	    resetted = timer.resetted;
+	    running = timer.running;
+	    beg = timer.beg;
+	    end = timer.end;
+	}
 
 	public void start()
 	{

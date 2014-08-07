@@ -6,7 +6,7 @@ public interface QueueInterface<T>
     
     public T removeFront();
     
-    public void addToBack(T newElement);
+    public boolean addToBack(T newElement);
     
     public int getLength();
     
